@@ -19,7 +19,7 @@ const experiences = [
     type: "experience"
   },
   {
-    title: "Contributor",
+    title: "Contributor+CA",
     company: "GirlScript Summer of Code",
     date: "Present",
     icon: <Briefcase />,

@@ -5,8 +5,8 @@ const About = () => {
   const highlights = [
     {
       icon: <Brain className="w-6 h-6" />,
-      title: "AI Enthusiast",
-      description: "Passionate about exploring the intersection of artificial intelligence and practical applications."
+      title: "AI/ML Enthusiast",
+      description: "Passionate about exploring the intersection of AI-ML and practical applications."
     },
     {
       icon: <Code className="w-6 h-6" />,
@@ -38,8 +38,8 @@ const About = () => {
         className="container mx-auto px-4 relative z-10"
       >
         <h2 className="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
-        
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* changed col-2 --> 1 */}
+        <div className="grid md:grid-cols-1 gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -48,18 +48,12 @@ const About = () => {
           >
             <div className="bg-white/5 backdrop-blur-lg rounded-lg p-6 shadow-xl border border-white/10">
               <p className="text-blue-100 leading-relaxed">
-                I am a passionate Computer Science and Artificial Intelligence student at Rajiv Gandhi Institute of Petroleum Technology (RGIPT),
-                pursuing an integrated BTech+MTech degree (2024-2029).
+                Hey there! I am Ishita Singh a dynamic scholar with a strong foundation in Computer Science and Artificial Intelligence, poised to make a significant impact in the field. Engaged in collaborative projects. Eager to leverage knowledge and fresh perspectives while contributing to innovative solutions in machine learning. Committed to continuous learning and excellence within the tech community, ready to embrace new challenges in a vibrant academic environment.
               </p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-lg rounded-lg p-6 shadow-xl border border-white/10">
-              <p className="text-blue-100 leading-relaxed">
-                With a strong foundation in frontend development and data analysis, I combine technical expertise with creative problem-solving
-                to build engaging and user-friendly applications.
-              </p>
+            
             </div>
           </motion.div>
-          
+{/*           
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -72,13 +66,8 @@ const About = () => {
                 that make a positive impact.
               </p>
             </div>
-            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-lg rounded-lg p-6 shadow-xl border border-white/10">
-              <p className="text-blue-100 leading-relaxed">
-                My goal is to leverage AI and modern web technologies to build solutions that are not just functional,
-                but also intuitive and accessible to everyone.
-              </p>
-            </div>
-          </motion.div>
+            
+          </motion.div> */}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

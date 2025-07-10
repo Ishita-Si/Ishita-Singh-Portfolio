@@ -43,7 +43,7 @@ const Hero = () => {
           transition={{ delay: 0.3 }}
           className="text-xl md:text-2xl mb-8 text-purple-100"
         >
-          Computer Science & AI Student | Frontend Developer
+          AI/ML & Frontend Developer
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}

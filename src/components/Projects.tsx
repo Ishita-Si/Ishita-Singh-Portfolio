@@ -3,7 +3,10 @@ import { useState } from 'react';
 import Modal from './Modal';
 import { ExternalLink, Github } from 'lucide-react';
 import gemini from  "../components/component/Gemini.png"
-import expense from  "../components/component/Expense.png"
+import sanraksha from  "../components/component/Banner (1).png"
+import agnirakshak from  "../components/component/agnirakshak.png"
+import { ArrowLeftFromLine } from 'lucide-react';
+import { useEffect } from 'react';
 
 interface Project {
   title: string;
@@ -33,25 +36,59 @@ const projects: Project[] = [
     githublink: " ",
   },
   {
-    title: "Expense Tracker",
-    description: "A web application for managing daily expenses and budget tracking",
-    image: expense,
-    techStack: ["HTML", "CSS", "JavaScript", "LocalStorage"],
-    features: [
-      "Add & Delete Transactions – Users can enter income or expenses and remove them when needed",
-      "Real-Time Balance Calculation – The app dynamically updates the total balance",
-      "Expense Categorization – Allows sorting expenses into different categories",
-      "Local Storage Support – Data persists even after refreshing the page"
-    ],
-    overview: "The Expense Tracker is a simple yet effective web application designed to help users manage their daily expenses. This project allows users to log their income and expenses, track spending habits, and maintain financial discipline—all within a clean and intuitive interface.",
-    livedemo: "https://ishita-si.github.io/Expense-Tracker/",
-    githublink: " https://github.com/Ishita-Si/Expense-Tracker",
+    title: "SanRaksha:Safeguarding MOMs",
+    description: "A smart healthcare application for risk prediction using vital signs and OCR integration",
+  image: sanraksha,
+  techStack: ["Web Development", "Geolocation-Based Statistical Dashboards"],
+  features: [
+    "Vital Sign Data Entry – Users can input key health metrics such as blood pressure, sugar levels, etc.",
+    "OCR Integration – Automates data entry by extracting health metrics from medical reports or handwritten notes",
+    "Health Risk Prediction – Uses trained ML models to predict if a user is at risk based on entered data",
+    "User-Friendly Interface – Built using Streamlit for easy access and real-time feedback",
+    "API-First Architecture – FastAPI is used for backend services, making the app scalable and modular"
+  ],
+  overview: "SanRaksha is aimed at simplifying health monitoring and risk detection. By integrating machine learning with OCR-based automation, it enables users—especially in rural or underserved areas—to easily enter health data and receive early warnings of potential health risks. Its simple UI ensures accessibility for all age groups and digital literacy levels.",
+
+    livedemo: "",
+    githublink: "https://github.com/sys6-exe/SanRaksha",
+  },
+  {
+    title: "BlazeTrack",
+    description: "An AI-powered wildfire detection and prediction system for real-time risk monitoring",
+image: agnirakshak,
+techStack: ["Python", "U-Net", "Attention Mechanism", "FastAPI", "Streamlit", "Machine Learning",'Deep Learning'],
+features: [
+  "Wildfire Detection – Uses U-Net with attention mechanism to identify fire regions from satellite imagery",
+  "Fire Spread Prediction – Forecasts possible spread zones to support proactive measures",
+  "User Interface – Streamlit frontend for visualizing fire risk maps and uploading data",
+  "API Support – FastAPI backend enables modular design and integration with other systems",
+  "Data-Driven Insights – Leverages real-time and historical satellite data for accurate predictions"
+],
+overview: "BlazeTrack is an intelligent wildfire management solution aimed at detecting active fires and predicting their spread using satellite imagery and deep learning. Built for regions like Uttarakhand, the system combines U-Net and attention mechanisms for accurate image segmentation, backed by a clean UI and scalable backend. It empowers authorities and communities with early warnings and actionable fire risk insights.",
+    livedemo: "",
+    githublink: "",
   }
 ];
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  useEffect(() => {
+  if (selectedProject) {
+    window.history.pushState({ modalOpen: true }, '');
+  }
+  const handlePopState = () => {
+    if (selectedProject) {
+      setSelectedProject(null);
+    }
+  };
+
+  window.addEventListener('popstate', handlePopState);
+
+  return () => {
+    window.removeEventListener('popstate', handlePopState);
+  };
+}, [selectedProject]);
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986')] opacity-5 bg-cover bg-center" />
@@ -104,7 +141,14 @@ const Projects = () => {
       <Modal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
         {selectedProject && (
           <div className="text-gray-800">
-            <h3 className="text-2xl font-bold mb-4">{selectedProject.title}</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              <button
+              onClick={() => setSelectedProject(null)}
+              className="mt-3 px-3 py-1 bg-gray-200 text-gray-1000 rounded-lg hover:bg-gray-300 transition-colors"
+            >
+            <ArrowLeftFromLine className="w-6 h-6" />
+            </button>
+            {' '}{selectedProject.title}</h3>
             <img
               src={selectedProject.image}
               alt={selectedProject.title}
